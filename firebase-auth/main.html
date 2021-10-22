@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Firebase Portal</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+  </head>
+  <body>
+    <!-- NavBar -->
+    <nav>
+      <div class="nav-wrapper">
+        <a href="#" class="brand-logo">Firebase Portal</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><a class="modal-trigger" href="#modal2">Login</a></li>
+          <li><a class="modal-trigger" href="#modal1">SignUp</a></li>
+          <li><a onclick="logout()">Logout</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- SignUp Modal -->
+    <div id="modal1" class="modal">
+      <div class="modal-content">
+        <h4>SignUp</h4>
+        <form onsubmit="signUp(event)">
+          <input type="email" id="SignUpEmail" placeholder="email" />
+          <input type="password" id="SignUpPassword" placeholder="password" />
+          <button class="btn modal-trigger">Submit</button>
+        </form>
+        <button onclick="loginWithGoogle()" class="btn waves-effect blue">
+          Login with Google
+        </button>
+      </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div id="modal2" class="modal">
+      <div class="modal-content">
+        <h4>Login</h4>
+        <form onsubmit="login(event)">
+          <input type="email" id="LoginEmail" placeholder="email" />
+          <input type="password" id="LoginPassword" placeholder="password" />
+          <button class="btn modal-trigger">Submit</button>
+        </form>
+        <button onclick="loginWithGoogle()" class="btn waves-effect blue">
+          Login with Google
+        </button>
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var elems = document.querySelectorAll(".modal");
+        var instances = M.Modal.init(elems);
+      });
+    </script>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-auth.js"></script>
+
+    <script>
+      const firebaseConfig = {
+        apiKey: "Your apiKey",
+        authDomain: "Your authDomain",
+        projectId: "Your projectId",
+        storageBucket: "Your storageBucket",
+        messagingSenderId: "Your messagingSenderId",
+        appId: "Your appId",
+      };
+
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+    </script>
+
+    <script src="scripts/auth.js"></script>
+  </body>
+</html>
